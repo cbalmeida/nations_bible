@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:nations_bible/ui/features/reader/reader_feature.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:nations_bible/ui/features/main/main_feature.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -12,12 +13,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Bible',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: const ReaderFeature(),
+      debugShowCheckedModeBanner: false,
+      title: 'Nations Bible',
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: AppLocalizations.supportedLocales,
+      locale: const Locale("en", "US"),
+      theme: ThemeData.dark(useMaterial3: true),
+      home: const MainFeature(),
     );
   }
 }

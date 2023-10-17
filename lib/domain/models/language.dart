@@ -1,19 +1,30 @@
-class Version {
-  final String versionName;
-  final String languageName;
-  final String fileName;
+part 'language_english.dart';
+part 'language_portuguese.dart';
 
-  Version({
-    required this.versionName,
-    required this.languageName,
-    required this.fileName,
+abstract class Language {
+  String get languageLongName;
+  String get languageShortName;
+  Map<int, LanguageBookInfo> get bookInfos;
+
+  LanguageBookInfo getLanguageBookInfo(int bookNumber) => bookInfos[bookNumber] ?? LanguageBookInfo(languageBookName: "", languageBookAbbreviation: "", languageChapterInfos: []);
+}
+
+class LanguageBookInfo {
+  final String languageBookName;
+  final String languageBookAbbreviation;
+  final List<LanguageChapterInfo> languageChapterInfos;
+
+  LanguageBookInfo({
+    required this.languageBookName,
+    required this.languageBookAbbreviation,
+    required this.languageChapterInfos,
   });
+}
 
-  static Version almeida_ra() {
-    return Version(
-      versionName: 'JFA-RA',
-      languageName: 'Português',
-      fileName: 'almeida_ra.sqlite',
-    );
-  }
+class LanguageChapterInfo {
+  final String languageChapterTitle;
+
+  LanguageChapterInfo({
+    required this.languageChapterTitle,
+  });
 }

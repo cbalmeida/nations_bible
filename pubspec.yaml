@@ -9,9 +9,16 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_localizations:
+    sdk: flutter
 
   cupertino_icons: ^1.0.2
   sqflite: ^2.3.0
+  path_provider: ^2.1.1
+  shared_preferences: ^2.2.1
+  intl: ^0.18.1
+  scrollable_positioned_list: ^0.3.8
+  uuid: ^4.1.0
 
 dev_dependencies:
   flutter_test:
@@ -22,7 +29,12 @@ dev_dependencies:
 flutter:
 
   uses-material-design: true
+  generate: true
 
   assets:
-     - versions/almeida_ra.sqlite
-     - versions/almeida_rc.sqlite
+     - assets/versions/almeida_ra.sqlite
+     - assets/versions/almeida_rc.sqlite
+     - assets/versions/blivre.sqlite
+     - assets/versions/asv.sqlite
+     - assets/versions/web.sqlite
+     - assets/versions/kjv.sqlite

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../domain/models/book.dart';
+import '../../../domain/models/book.dart';
 
 class BookDropDown extends StatelessWidget {
   final Book? selectedBook;
@@ -16,9 +16,18 @@ class BookDropDown extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DropdownButton<Book?>(
+      alignment: AlignmentDirectional.centerEnd,
+      isExpanded: true,
       value: selectedBook,
       onChanged: onChanged,
-      items: books.map<DropdownMenuItem<Book>>((Book book) => DropdownMenuItem<Book>(value: book, child: Text(book.languageBookInfo.languageBookName))).toList(),
+      items: books
+          .map<DropdownMenuItem<Book>>(
+            (Book book) => DropdownMenuItem<Book>(
+              value: book,
+              child: Center(child: Text(book.languageBookInfo.languageBookName, style: TextStyle(fontSize: 14, fontWeight: book == selectedBook ? FontWeight.bold : null))),
+            ),
+          )
+          .toList(),
     );
   }
 }

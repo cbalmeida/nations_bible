@@ -1,12 +1,15 @@
 import '../models/book.dart';
+import '../models/book_mark.dart';
 import '../models/chapter.dart';
 import '../models/verse.dart';
 import '../models/version.dart';
 
-abstract class IService {
+abstract class IBibleService {
   //#region Version
 
-  Version? version;
+  Version get version;
+
+  set version(Version value);
 
   //#endregion
 
@@ -41,4 +44,24 @@ abstract class IService {
   Future<List<Verse>> getAllVerses();
 
   //#endregion
+
+  //#region BookMark
+
+  Future<bool> saveBookMark({required BookMark bookMark});
+
+  Future<bool> addVerseToBookMark({required BookMark bookMark, required Verse verse});
+
+  Future<List<BookMark>> getAllBookMarks();
+
+  Future<BookMark> getBookMark({required String bookMarkId});
+
+  Future<List<Verse>> getVersesByBookMark({required String bookMarkId});
+
+  Future<List<BookMark>> getBookMarksFromVerse({required Verse verse});
+
+  Future<bool> isVerseAssociatedToBookMark({required BookMark bookMark, required Verse verse});
+
+  Future<bool> toggleAssociationVerseToBookMark({required BookMark bookMark, required Verse verse});
+
+//#endregion
 }
